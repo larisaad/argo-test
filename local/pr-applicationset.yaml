@@ -11,7 +11,7 @@ spec:
           # The Github repository
           repo: argo-test
           # For GitHub Enterprise (optional)
-          api: https://github.com/
+          api: https://api.github.com/
           # Reference to a Secret containing an access token. (optional)
           tokenRef:
             secretName: github-token
@@ -24,7 +24,7 @@ spec:
         requeueAfterSeconds: 1800
   template:
     metadata:
-      name: 'pr-{{branch}}-{{number}}'
+      name: 'pr-{{number}}'
     spec:
       source:
         repoURL: 'https://github.com/larisaad/argo-test.git'
