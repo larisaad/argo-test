@@ -1,17 +1,17 @@
 apiVersion: argoproj.io/v1alpha1
 kind: ApplicationSet
 metadata:
-  name: audit-pr-generator
+  name: pr-generator
 spec:
   generators:
     - pullRequest:
         github:
           # The GitHub organization or user.
-          owner: experience-platform
+          owner: larisaad
           # The Github repository
-          repo: audit
+          repo: argo-test
           # For GitHub Enterprise (optional)
-          api: https://git.corp.adobe.com/
+          api: https://github.com/
           # Reference to a Secret containing an access token. (optional)
           tokenRef:
             secretName: github-token
@@ -24,26 +24,20 @@ spec:
         requeueAfterSeconds: 1800
   template:
     metadata:
-      name: 'audit-pr-{{branch}}-{{number}}'
+      name: 'pr-{{branch}}-{{number}}'
     spec:
       source:
-        repoURL: 'https://git.corp.adobe.com/experience-platform/audit-deploy.git'
-        targetRevision: 'main'
-        path: k8s/helm/PR/va7/
+        repoURL: 'https://github.com/larisaad/argo-test.git'
+        targetRevision: 'master'
+        path: local/helm/
         helm:
           parameters:
-            - name: 'deployment.container.image.tag'
-              value: 'pull-{{head_sha}}'
             - name: 'namespace'
-              value: 'ns-team-audit-pr-argo-{{number}}'
-            - name: 'service.ingress.host.mct'
-              value: 'argo-audit-service-{{number}}.int.ethos12-stage-va7.ethos.adobe.net'
-            - name: 'service.ingress.host.corp'
-              value: 'argo-audit-service-{{number}}.corp.ethos12-stage-va7.ethos.adobe.net'
-      project: 'experience-platform--audit-deploy--appprojec-0139cf77'
+              value: 'ns-pr-argo-{{number}}'
+      project: default
       destination:
-        server: 'https://ethos12-stage-va7.ethos.adobe.net'
-        namespace: 'ns-team-audit-pr-argo-{{number}}'
+        server: 'https://kubernetes.default.svc'
+        namespace: 'ns-pr-argo-{{number}}'
       syncPolicy:
         automated:
           prune: true
