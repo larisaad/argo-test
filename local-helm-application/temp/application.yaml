@@ -17,10 +17,11 @@ spec:
       releaseName: helm-test
       valueFiles:
         - values-dev.yaml
+        - values.yaml
       ignoreMissingValueFiles: true
       skipCrds: true
   destination:
-    server: 127.0.0.1:6443
+    server: https://kubernetes.default.svc
     namespace: dev
   syncPolicy:
     automated:
