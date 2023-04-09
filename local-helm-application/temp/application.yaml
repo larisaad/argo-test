@@ -12,11 +12,10 @@ spec:
   source:
     repoURL: 'https://github.com/larisaad/argo-test.git'
     targetRevision: HEAD
-    path: local-helm-application/temp/example-app
+    path: local-helm-application/temp/umbrella-chart
     helm:
       releaseName: helm-test
       valueFiles:
-        - values-dev.yaml
         - values.yaml
       ignoreMissingValueFiles: true
       skipCrds: true
