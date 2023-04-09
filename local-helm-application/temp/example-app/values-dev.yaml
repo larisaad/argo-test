@@ -1,4 +1,2 @@
-metadata:
-  name: dev-nginx
-spec:
-  replicas: 2
+name: dev-nginx
+replicas: 2
