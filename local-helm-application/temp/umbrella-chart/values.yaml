@@ -1,2 +1,2 @@
-name: umbrella-nginx
-replicas: 1
+example-app:
+  name: umbrella-nginx
