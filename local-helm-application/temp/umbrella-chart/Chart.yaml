@@ -26,3 +26,5 @@ dependencies:
     version: 0.1.0
     repository: "https://raw.githubusercontent.com/larisaad/argo-test/master/local-helm-application/temp/local-helm-repo"
     alias: child
+    import-values:
+      - values-dev
