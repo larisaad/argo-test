@@ -23,6 +23,6 @@ version: 0.1.0
 appVersion: 1.16.0
 dependencies:
   - name: example-app
-    version: 0.1.0
+    version: 0.1.1
     repository: "https://raw.githubusercontent.com/larisaad/argo-test/master/local-helm-application/temp/local-helm-repo"
     alias: child
