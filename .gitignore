@@ -1,3 +1,3 @@
 .idea/
-local/github-secret.yaml
-local/github-secret2.yaml
+local-applicationset/github-secret.yaml
+local-applicationset/github-secret2.yaml

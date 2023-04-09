@@ -1,11 +1,11 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx-deployment
+  name: {{ .Values.name }}
   labels:
     app: nginx
 spec:
-  replicas: 0
+  replicas: {{ .Values.replicas }}
   selector:
     matchLabels:
       app: nginx
