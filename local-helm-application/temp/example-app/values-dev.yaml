@@ -1,0 +1,4 @@
+metadata:
+  name: dev-nginx
+spec:
+  replicas: 2

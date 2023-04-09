@@ -1,0 +1,4 @@
+metadata:
+  name: stage-nginx
+spec:
+  replicas: 3

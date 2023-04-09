@@ -1,0 +1,4 @@
+metadata:
+  name: default-nginx
+spec:
+  replicas: 1
