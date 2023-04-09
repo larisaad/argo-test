@@ -16,7 +16,7 @@ spec:
     helm:
       releaseName: helm-test
       valueFiles:
-        - values.yaml
+        - values-dev.yaml
       ignoreMissingValueFiles: true
       skipCrds: true
   destination:

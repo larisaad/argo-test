@@ -1,0 +1,6 @@
+helmCharts:
+  - name: example-app
+    includeCRDs: false
+    releaseName: helm-test
+    version: 0.1.0
+    repo: "https://raw.githubusercontent.com/larisaad/argo-test/master/local-helm-application/temp/local-helm-repo"
