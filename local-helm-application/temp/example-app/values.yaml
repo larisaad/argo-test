@@ -1,2 +1,2 @@
-name: default-nginx
+name: default-nginx-1
 replicas: 1
