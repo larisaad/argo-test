@@ -1,0 +1,36 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-cm
+  namespace: argocd
+  labels:
+    app.kubernetes.io/name: argocd-cm
+    app.kubernetes.io/part-of: argocd
+data:
+  resource.customizations: |
+    batch/Job:
+      health.lua: |
+        hs = {}
+        hs.message = ""
+        print(obj.name)
+        print(obj.namespace)
+        print(obj.parallelism)
+        if obj.name == "tests-in-sync-wave" then
+          hs.status = "Degraded"
+          return hs
+        end
+        local succeeded = "Succeeded"
+        local active = "Active"
+        if obj.podsstatuses ~= nil then
+          if podstatuses[active] > 0 then
+            hs.status = "Progressing"
+            return hs
+          end
+          if podstatuses[succeeded] > 0 then
+            hs.status = "Succeeded"
+            return hs
+          end
+        end
+
+        hs.status = "Degraded"
+        return hs
