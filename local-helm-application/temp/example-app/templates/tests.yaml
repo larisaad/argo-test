@@ -1,17 +1,16 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: "tests-in-sync-wave-5"
+  name: "tests-in-sync-wave"
+  annotations:
+    argocd.argoproj.io/sync-options: Replace=true
 spec:
-  suspend: true
   template:
     spec:
       restartPolicy: Never
       containers:
         - name: {{ .Chart.Name | lower }}-tests
           image: busybox
-{{/*          command: ["/bin/sh"]*/}}
-{{/*          args: ["-c", "echo \"running tests\"; exit 1"]*/}}
-          command: [ "sleep", "5" ]
-
+          command: ["/bin/sh"]
+          args: ["-c", "echo \"running tests\"; exit 1"]
   backoffLimit: 0
