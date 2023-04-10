@@ -12,9 +12,15 @@ data:
       health.lua: |
         hs = {}
         hs.message = ""
+        print("health custom check is executing")
         print(obj.name)
+        print(obj["name"])
         print(obj.namespace)
         print(obj.parallelism)
+        for k,v in ipairs(obj) do
+          print(k,v)
+        end
+        print("finished printing obj")
         if obj.name == "tests-in-sync-wave" then
           hs.status = "Degraded"
           return hs
@@ -34,4 +40,3 @@ data:
 
         hs.status = "Degraded"
         return hs
-    resource.customizations.useOpenLibs.batch_Job: 'true'
