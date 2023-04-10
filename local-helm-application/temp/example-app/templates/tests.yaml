@@ -4,6 +4,7 @@ metadata:
   name: "tests-in-sync-wave-22"
   annotations:
     argocd.argoproj.io/sync-options: Replace=true
+    argocd.argoproj.io/sync-wave: "1"
 spec:
   template:
     spec:
@@ -12,5 +13,5 @@ spec:
         - name: {{ .Chart.Name | lower }}-tests
           image: busybox
           command: ["/bin/sh"]
-          args: ["-c", "echo \"running tests\"; exit 1"]
+          args: ["-c", "echo \"running tests\"; exit 0"]
   backoffLimit: 0
