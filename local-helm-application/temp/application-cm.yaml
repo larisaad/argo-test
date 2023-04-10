@@ -11,32 +11,23 @@ data:
     batch/Job:
       health.lua: |
         hs = {}
-        hs.message = ""
-        print("health custom check is executing")
-        print(obj.name)
-        print(obj["name"])
-        print(obj.namespace)
-        print(obj.parallelism)
-        for k,v in ipairs(obj) do
-          print(k,v)
-        end
-        print("finished printing obj")
-        if obj.name == "tests-in-sync-wave" then
-          hs.status = "Degraded"
+        if obj.status == nil or obj.status.conditions == nil then
           return hs
         end
-        local succeeded = "Succeeded"
-        local active = "Active"
-        if obj.podsstatuses ~= nil then
-          if podstatuses[active] > 0 then
-            hs.status = "Progressing"
+  
+        for i, condition in ipairs(obj.status.conditions) do
+          if condition.type == "Complete" then
+            hs.message = "Job run finished"
+            hs.status = "Healthy"
             return hs
           end
-          if podstatuses[succeeded] > 0 then
-            hs.status = "Succeeded"
+          if condition.type == "Failed" then
+            hs.message = condition.message
+            hs.status = "Degraded"
             return hs
           end
         end
-
-        hs.status = "Degraded"
+        
+        hs.status = "Progressing"
+        hs.message = "Proceeding with Job run..."
         return hs
