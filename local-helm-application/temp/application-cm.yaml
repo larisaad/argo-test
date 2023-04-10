@@ -34,3 +34,4 @@ data:
 
         hs.status = "Degraded"
         return hs
+    resource.customizations.useOpenLibs.batch_Job: 'true'
