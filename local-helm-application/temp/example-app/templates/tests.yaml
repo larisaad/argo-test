@@ -1,10 +1,11 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: "tests-in-sync-wave-22"
+  generateName: "tests-in-sync-hook-"
   annotations:
-    argocd.argoproj.io/sync-options: Replace=true
-    argocd.argoproj.io/sync-wave: "1"
+{{/*    argocd.argoproj.io/sync-options: Replace=true*/}}
+{{/*    argocd.argoproj.io/sync-wave: "1"*/}}
+    argocd.argoproj.io/hook: PostSync
 spec:
   template:
     spec:
@@ -13,5 +14,5 @@ spec:
         - name: {{ .Chart.Name | lower }}-tests
           image: busybox
           command: ["/bin/sh"]
-          args: ["-c", "echo \"running tests\"; exit 0"]
+          args: ["-c", "echo \"running tests\"; exit 1"]
   backoffLimit: 0
