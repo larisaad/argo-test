@@ -13,6 +13,8 @@ spec:
       containers:
         - name: {{ .Chart.Name | lower }}-tests
           image: busybox
-          command: ["/bin/sh"]
-          args: ["-c", "echo \"running tests\"; exit 1"]
+{{/*          command: ["/bin/sh"]*/}}
+{{/*          args: ["-c", "echo \"running tests\"; exit 1"]*/}}
+          command: [ "sleep", "5" ]
+
   backoffLimit: 0
