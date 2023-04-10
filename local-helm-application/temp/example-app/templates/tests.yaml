@@ -6,6 +6,7 @@ metadata:
     argocd.argoproj.io/hook: PostSync
     argocd.argoproj.io/hook-delete-policy: HookSucceeded
 spec:
+  suspend: true
   template:
     spec:
       restartPolicy: Never
