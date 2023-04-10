@@ -2,7 +2,6 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   name: "tests-in-sync-wave-3"
-  annotations:
 spec:
   suspend: true
   template:
