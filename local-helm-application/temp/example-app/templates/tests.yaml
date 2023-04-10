@@ -1,9 +1,8 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: "tests-in-sync-wave-3"
+  name: "tests-in-sync-wave-4"
 spec:
-  suspend: true
   template:
     spec:
       restartPolicy: Never
