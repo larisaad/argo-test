@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: "tests-in-sync-wave"
+  name: "tests-in-sync-wave-22"
   annotations:
     argocd.argoproj.io/sync-options: Replace=true
 spec:
