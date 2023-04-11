@@ -58,7 +58,16 @@ data:
               hs.message = health.message
             end
             local syncStatus = (status.sync and status.sync.status or nil)
+            if hs.status == "Healthy" and syncStatus ~= "Synced" then
+              print("healthy but not synced")
+              hs.status = "Degraded"
+            end
             if hs.status == "Healthy" and syncStatus == "Sync failed" then
+              print("healthy but sync failed")
+              hs.status = "Degraded"
+            end
+            if hs.status == "Healthy" and status.operationState ~= nil and status.operationState.phase == "Failed" then
+              print("healthy but phase failed")
               hs.status = "Degraded"
             end
           end

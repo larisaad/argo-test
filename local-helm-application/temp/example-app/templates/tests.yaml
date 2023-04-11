@@ -1,12 +1,12 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  generateName: "tests-in-sync-hook-"
+  name: "tests-in-sync-hook"
   annotations:
-{{/*    argocd.argoproj.io/sync-options: Replace=true*/}}
-{{/*    argocd.argoproj.io/sync-wave: "1"*/}}
-    argocd.argoproj.io/hook: PostSync
-    argocd.argoproj.io/hook-delete-policy: BeforeHookCreation
+    argocd.argoproj.io/sync-options: Replace=true
+    argocd.argoproj.io/sync-wave: "1"
+{{/*    argocd.argoproj.io/hook: PostSync*/}}
+{{/*    argocd.argoproj.io/hook-delete-policy: BeforeHookCreation*/}}
 spec:
   template:
     spec:
