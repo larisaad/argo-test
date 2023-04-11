@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: "tests-in-sync-hook-recreate"
+  generateName: "tests-in-sync-hook-recreate"
   annotations:
     argocd.argoproj.io/sync-wave: "1"
 {{/*    argocd.argoproj.io/sync-options: Replace=true*/}}
