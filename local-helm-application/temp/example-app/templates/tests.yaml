@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: "tests-in-sync-hook-pod-"
+  name: "tests-in-sync-hook-pod"
   annotations:
 {{/*    argocd.argoproj.io/sync-wave: "1"*/}}
 {{/*    argocd.argoproj.io/sync-options: Replace=true*/}}
