@@ -1,18 +1,15 @@
-apiVersion: batch/v1
-kind: Job
+apiVersion: v1
+kind: Pod
 metadata:
-  generateName: "tests-in-sync-hook-changeme-"
+  name: "tests-in-sync-hook-pod-"
   annotations:
 {{/*    argocd.argoproj.io/sync-wave: "1"*/}}
 {{/*    argocd.argoproj.io/sync-options: Replace=true*/}}
-    argocd.argoproj.io/hook: Sync
+    argocd.argoproj.io/hook: PostSync
 spec:
-  template:
-    spec:
-      restartPolicy: Never
-      containers:
-        - name: {{ .Chart.Name | lower }}-tests
-          image: busybox
-          command: ["/bin/sh"]
-          args: ["-c", "echo \"running tests\"; exit 1"]
-  backoffLimit: 0
+  containers:
+    - name: {{ .Chart.Name | lower }}-tests
+      image: busybox
+      command: ["/bin/sh"]
+      args: ["-c", "echo \"running tests\"; exit 1"]
+
