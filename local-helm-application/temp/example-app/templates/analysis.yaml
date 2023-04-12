@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AnalysisTemplate
+metadata:
+  name: tests
+spec:
+  metrics:
+    - name: tests
+      provider:
+        job:
+          spec:
+            backoffLimit: 1
+            template:
+              spec:
+                containers:
+                  - name: tests
+                    image: busybox
+                    command: ["/bin/sh"]
+                    args: ["-c", "echo \"running tests\"; exit 1"]
+                restartPolicy: Never
