@@ -1,18 +1,18 @@
-apiVersion: batch/v1
-kind: Job
-metadata:
-  generateName: "sync-fail-hook-"
-  annotations:
+{{/*apiVersion: batch/v1*/}}
+{{/*kind: Job*/}}
+{{/*metadata:*/}}
+{{/*  generateName: "sync-fail-hook-"*/}}
+{{/*  annotations:*/}}
 {{/*    argocd.argoproj.io/sync-wave: "1"*/}}
 {{/*    argocd.argoproj.io/sync-options: Replace=true*/}}
-    argocd.argoproj.io/hook: SyncFail
-spec:
-  template:
-    spec:
-      restartPolicy: Never
-      containers:
-        - name: {{ .Chart.Name | lower }}-tests
-          image: busybox
-          command: ["/bin/sh"]
-          args: ["-c", "echo \"running tests\"; exit 0"]
-  backoffLimit: 0
+{{/*    argocd.argoproj.io/hook: SyncFail*/}}
+{{/*spec:*/}}
+{{/*  template:*/}}
+{{/*    spec:*/}}
+{{/*      restartPolicy: Never*/}}
+{{/*      containers:*/}}
+{{/*        - name: {{ .Chart.Name | lower }}-tests*/}}
+{{/*          image: busybox*/}}
+{{/*          command: ["/bin/sh"]*/}}
+{{/*          args: ["-c", "echo \"running tests\"; exit 0"]*/}}
+{{/*  backoffLimit: 0*/}}
