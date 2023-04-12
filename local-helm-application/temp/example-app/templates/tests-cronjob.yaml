@@ -7,7 +7,7 @@ metadata:
 {{/*    argocd.argoproj.io/sync-options: Replace=true*/}}
 {{/*    argocd.argoproj.io/hook: Sync*/}}
 spec:
-  schedule: "* * * * *"
+  schedule: "*/10 * * * *"
   jobTemplate:
     spec:
       template:
